@@ -22,7 +22,7 @@ struct PokedexView: View {
                         viewModel.pokemon
                         ForEach(dataSource) { pokemon in
                            NavigationLink(
-                            destination: NavigationLazyView(PokemonDetailView()),
+                            destination: NavigationLazyView(PokemonDetailView(pokemon: pokemon)),
                             label: {
                                 PokemonCell(pokemon: pokemon)
                                     .frame(width:220, height: 108)
@@ -31,7 +31,7 @@ struct PokedexView: View {
                         }
                     }
                 }
-                .navigationBarTitle("Poke mo! Catch em all")
+                .navigationBarTitle("Pokemon")
                 .onAppear {
                     viewModel.fetchPokemon()
                 }
@@ -53,3 +53,4 @@ struct PokedexView_Previews: PreviewProvider {
 
 
 // to toggle preview =  option + command + enter
+// to search file = command + shit + o
