@@ -48,7 +48,7 @@ struct BarChartView: View {
             BarView(value: pokemon.attack, title: "Attack", color:.red)
             BarView(value: pokemon.defense, title: "Defense", color:.blue)
             BarView(value: pokemon.weight, title: "Weight", color:.purple)
-            BarView(value: 1000, title: "Total", color:.green)
+            BarView(value: 100, title: "Total", color:.green)
         }.padding()
     }
 }

@@ -45,6 +45,7 @@ struct PokemonDetailView: View {
                     Text(pokemon.description)
                         .padding(.horizontal)
                         .padding(.top, 12)
+                    
                     HStack{ Spacer() }
                 }
                 .background(Color.white)
@@ -54,10 +55,15 @@ struct PokemonDetailView: View {
                 
                 HStack{
                     Text("Stats")
-                        .font(.system(size:16, weight: .semibold))
+                        .font(.system(size: 16, weight: .semibold))
                         .padding(.leading)
+                    
                     Spacer()
                 }
+                
+                BarChartView(pokemon: pokemon)
+                    .padding(.trailing)
+                
             }
         }
     }

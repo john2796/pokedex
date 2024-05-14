@@ -35,11 +35,46 @@ struct PokedexView: View {
                 .onAppear {
                     viewModel.fetchPokemon()
                 }
+                
+                VStack {
+                    if showFilterButtons {
+                        
+                        ActionButton(imageName: "fire", backgroundColor: .red, show:$showFilterButtons) {
+                            filterApplied.toggle()
+                            showFilterButtons.toggle()
+                            viewModel.filterPokemon(by: "fire")
+                        }
+                        
+                        ActionButton(imageName: "leaf", backgroundColor: .green, show:$showFilterButtons) {
+                            filterApplied.toggle()
+                            showFilterButtons.toggle()
+                            viewModel.filterPokemon(by: "poison")
+                        }
+                        
+                        ActionButton(imageName: "water", backgroundColor: .blue, show:$showFilterButtons) {
+                            filterApplied.toggle()
+                            showFilterButtons.toggle()
+                            viewModel.filterPokemon(by: "water")
+                        }
+                        
+                        ActionButton(imageName: "lightning", backgroundColor: .yellow, show:$showFilterButtons) {
+                            filterApplied.toggle()
+                            showFilterButtons.toggle()
+                            viewModel.filterPokemon(by: "electric")
+                        }
+                    
+                    }
+                    
+                    let imageName = filterApplied ? "refresh" : "filter"
+                    
+                    ActionButton(imageName: imageName, height: 36, width: 36, show:$showFilterButtons) {
+                        filterApplied ? filterApplied.toggle() :
+                        showFilterButtons.toggle()
+                    }.rotationEffect(.init(degrees: self.showFilterButtons ?  180 : 0))
+                }
+                .padding()
+                .animation(.spring())
             }
-            
-        PokemonCell(pokemon: SAMPLE_POKEMON)
-            .frame(width: 220, height: 108)
-            .padding(.horizontal)
         }
     }
 }
